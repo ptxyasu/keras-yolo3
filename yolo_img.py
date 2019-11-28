@@ -14,6 +14,9 @@ def detect_img(yolo):
 
         if os.path.exists(file_path+"result") != True:
            os.mkdir(file_path+"result")
+        if os.path.exists(file_path+"Annotations") != True:
+           annotation_path = file_path+"Annotations"
+           os.mkdir(annotation_path)
 
         for i in range(len(img_list)):
             img_name = img_list[i]
@@ -30,7 +33,7 @@ def detect_img(yolo):
             else:
                 #r_image = yolo.detect_image(image)
                 #r_image.show()
-                r_image = yolo.detect_image(image,img_name,img_path)
+                r_image = yolo.detect_image(image,img_name,img_path,annotation_path)
                 r_image.save(file_path+"result/"+img_name)
 
     yolo.close_session()
