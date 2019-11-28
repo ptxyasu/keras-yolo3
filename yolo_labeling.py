@@ -23,12 +23,12 @@ import os
 
 class YOLO(object):
     _defaults = {
-        "model_path": 'yolo_weights.h5',
+        "model_path": 'model_data/yolo.h5',
         "anchors_path": 'model_data/yolo_anchors.txt',
-        "classes_path": 'model_data/voc_classes.txt',
+        "classes_path": 'model_data/coco_classes.txt',
         "score" : 0.3,
         "iou" : 0.45,
-        "model_image_size" : (320, 320),
+        "model_image_size" : (416, 416),
         "gpu_num" : 4,
     }
 
@@ -159,7 +159,7 @@ class YOLO(object):
         return annotation
 
 
-    def detect_image(self,image,img_name,img_path):
+    def detect_image(self,image,img_name,img_path,annotation_path):
         start = timer()
 
         if self.model_image_size != (None, None):
@@ -230,10 +230,10 @@ class YOLO(object):
 
 
         tree = ET.ElementTree(ann)
-        annotation_path,ext = img_name.split(".")
-        annotation_path = "./Annotation/" + annotation_path + ".xml"
-
-        tree.write(annotation_path,"utf-8",True)
+        annotation_name,ext = img_name.split(".")
+        annotation_name = "/" + annotation_name + ".xml"
+        annotation = annotation_path + annotation_name
+        tree.write(annotation,"utf-8",True)
 
         return image
 
