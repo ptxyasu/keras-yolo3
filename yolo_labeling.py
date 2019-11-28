@@ -194,8 +194,7 @@ class YOLO(object):
         thickness = (image.size[0] + image.size[1]) // 500
 
 
-        ann = self.make_xml(image,img_name,img_path)############################################################################
-
+        ann = self.make_xml(image,img_name,img_path)
         for i, c in reversed(list(enumerate(out_classes))):
             predicted_class = self.class_names[c]
             box = out_boxes[i]
@@ -212,8 +211,7 @@ class YOLO(object):
             right = min(image.size[0], np.floor(right + 0.5).astype('int32'))
             print(label, (left, top), (right, bottom))
 
-            ann = self.make_xml_object(ann,predicted_class,left,bottom,right,top)##########################################################
-
+            ann = self.make_xml_object(ann,predicted_class,left,bottom,right,top)
             if top - label_size[1] >= 0:
                 text_origin = np.array([left, top - label_size[1]])
             else:
