@@ -103,18 +103,16 @@ class YOLO(object):
         return boxes, scores, classes
 
     def make_xml(self,image,img_name,img_path):
-        # 親要素
+        #parent
         annotation = ET.Element('annotation')
 
-        # 子要素
+        #child
         folder = ET.SubElement(annotation, 'folder')
         filename = ET.SubElement(annotation, 'filename')
         path = ET.SubElement(annotation, 'path')
         source = ET.SubElement(annotation, 'source')
         size = ET.SubElement(annotation, 'size')
         segmented = ET.SubElement(annotation, 'segmented')
-
-        # 孫要素
         database = ET.SubElement(source, 'database')
         width = ET.SubElement(size,'width')
         height = ET.SubElement(size,'height')
@@ -137,7 +135,6 @@ class YOLO(object):
 
 
     def make_xml_object(self,annotation,class_name,x1,y1,x2,y2):
-        #tag_object nohouiikamo
         object = ET.SubElement(annotation, 'object')
         name = ET.SubElement(object,'name')
         pose = ET.SubElement(object,'pose')
