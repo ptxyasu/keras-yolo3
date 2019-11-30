@@ -5,8 +5,8 @@
 ## Introduction
 
 A Keras implementation of YOLOv3 (Tensorflow backend) inspired by [allanzelener/YAD2K](https://github.com/allanzelener/YAD2K).
-It make annotation file after detect object.
 ---
+It make annotation file after detect object.
 
 ## Quick Start
 
